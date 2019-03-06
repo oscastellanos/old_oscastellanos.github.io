@@ -605,7 +605,7 @@ pre code span { word-break: break-all; }
 .nav-list .nav-item:after { content: '/'; }
 .nav-list .nav-item:last-child:after { content: ''; }
 .nav-list .nav-item a { margin-top: 1em; text-transform: lowercase; font-size: 85%; color: #00c07f; }
-.nav-list .nav-item a:hover, .nav-list .nav-item a:focus { color: #a2c9bc; }
+.nav-list .nav-item a:hover, .nav-list .nav-item a:focus { color: #c6f0e3; }
 
 ul.tag-cloud { padding: 2em 0 3em; margin: 0; overflow: hidden; list-style: none; }
 ul.tag-cloud li { display: inline-block; margin-right: .5em; }
