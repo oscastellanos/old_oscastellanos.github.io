@@ -589,8 +589,8 @@ pre code span { word-break: break-all; }
 .cover-card { color: rgba(0, 0, 0, 0.87); padding: 0 30px; }
 .cover-card .avatar { border-radius: 50%; width: 100px; height: 100px; float: none; }
 @media only screen and (min-width: 992px) { .cover-card .avatar { margin-right: 0; } }
-.cover-card .author_name { display: block; color: #F36170; font-size: 1.75em; text-transform: lowercase; }
-.cover-card .author_job { display: block; color: #8d7edc; font-size: 0.8em; font-weight: 700; text-transform: uppercase; margin: -5px auto 10px; }
+.cover-card .author_name { display: block; color: #3498db; font-size: 1.75em; text-transform: lowercase; }
+.cover-card .author_job { display: block; color: #00c07f; font-size: 0.8em; font-weight: 700; text-transform: uppercase; margin: -5px auto 10px; }
 .cover-card .author_bio { font-size: 90%; display: block; }
 @media only screen and (min-width: 992px) { .cover-card { text-align: right; margin: 0 auto; padding: 0 0px 80px; } }
 
@@ -604,8 +604,8 @@ pre code span { word-break: break-all; }
 .nav-list .nav-item { display: inline-block; *display: inline; zoom: 1; }
 .nav-list .nav-item:after { content: '/'; }
 .nav-list .nav-item:last-child:after { content: ''; }
-.nav-list .nav-item a { margin-top: 1em; text-transform: lowercase; font-size: 85%; color: #8d7edc; }
-.nav-list .nav-item a:hover, .nav-list .nav-item a:focus { color: #bfb6eb; }
+.nav-list .nav-item a { margin-top: 1em; text-transform: lowercase; font-size: 85%; color: #00c07f; }
+.nav-list .nav-item a:hover, .nav-list .nav-item a:focus { color: #a2c9bc; }
 
 ul.tag-cloud { padding: 2em 0 3em; margin: 0; overflow: hidden; list-style: none; }
 ul.tag-cloud li { display: inline-block; margin-right: .5em; }
