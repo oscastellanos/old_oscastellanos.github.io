@@ -34,7 +34,7 @@ kramdown:
 #
 owner:
   name: "Osvaldo Castellanos"
-  avatar: 
+  avatar:
   job: "Machine Learning Graduate Student"
   bio: "Learning how machines learn."
   email: "oscastellanos@outlook.com"
@@ -43,7 +43,7 @@ owner:
   facebook: #username
   google:
     plus: #username
-    analytics:
+    analytics: UA-105202997-1
     verify:
     ad-client:
     ad-slot:
