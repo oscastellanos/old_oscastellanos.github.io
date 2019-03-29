@@ -4,10 +4,10 @@
 ####################################
 #
 title: Ozzy's Blog
-email:
+email: oscastellanos@outlook.com
 description: Learning how machines learn.
 url: # the base hostname & protocol for your site
-keywords: ["blog", "jekyll"]
+keywords: ["blog", "jekyll", "machine learning", "deep learning", "reinforcement learning"]
 
 #
 ###################################
@@ -33,13 +33,13 @@ kramdown:
 ####################################
 #
 owner:
-  name: Osvaldo Castellanos
-  avatar: leonids-logo.png
+  name: "Osvaldo Castellanos"
+  avatar: 
   job: "Machine Learning Graduate Student"
   bio: "Learning how machines learn."
-  email:
+  email: "oscastellanos@outlook.com"
   disqus-shortname:
-  twitter: #username
+  twitter: castellanos_os
   facebook: #username
   google:
     plus: #username
@@ -48,10 +48,10 @@ owner:
     ad-client:
     ad-slot:
   bing-verify:
-  github: #username
+  github: "oscastellanos"
   gitlab: #username
   stackoverflow: #123456/username   from a "http://stackoverflow.com/users/123456/username" link
-  linkedin: #username
+  linkedin: osvaldo-castellanos
   skype: #username
   xing: #username
   instagram: #username

@@ -1,4 +1,4 @@
-- name: Deep Reinforcement Traffic Signal Controller
-  descr: "This is my master's final project."
-  image: pong.png
+- name: Deep Reinforcement Learning Traffic Signal Controller
+  descr: "Applying deep reinforcement learning algorithms to the domain of traffic management. I designed a simulator built on PyGame that also works as an OpenAI gym environment."
+  image: gym-traffic-example1.png
   github: https://github.com/oscastellanos/gym-traffic
