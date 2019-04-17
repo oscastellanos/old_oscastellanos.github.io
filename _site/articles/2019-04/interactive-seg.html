@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Digital Image Processing Course: My group's final project.">
+  <meta name="keywords" content="blog, jekyll, machine learning, deep learning, and reinforcement learning">
+  <meta name="author" content="Interactive Segmentation with Imperfect Input | Ozzy&#39;s Blog">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f5f5">
+
+  <!-- Twitter Tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Interactive Segmentation with Imperfect Input | Ozzy&#39;s Blog">
+  <meta name="twitter:description" content="Digital Image Processing Course: My group&#39;s final project.">
+  
+    <meta property="twitter:image" content="http://localhost:4000/img/leonids-logo.png">
+  
+
+  <!-- Open Graph Tags -->
+  <meta property="og:type" content="blog">
+  <meta property="og:url" content="http://localhost:4000/articles/2019-04/interactive-seg">
+  <meta property="og:title" content="Interactive Segmentation with Imperfect Input | Ozzy&#39;s Blog">
+  <meta property="og:description" content="Digital Image Processing Course: My group&#39;s final project.">
+  
+    <meta property="og:image" content="http://localhost:4000/img/leonids-logo.png">
+  
+  <title>Interactive Segmentation with Imperfect Input | Ozzy's Blog</title>
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/articles/2019-04/interactive-seg">
+  <link rel="alternate" type="application/rss+xml" title="Ozzy&#39;s Blog" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+
+<body>
+  <div class="row">
+    <div class="col s12 m3">
+      <div class="table cover">
+        
+
+<div class="cover-card table-cell table-middle">
+  
+  <a href="http://localhost:4000/" class="author_name">Osvaldo Castellanos</a>
+  <span class="author_job">Machine Learning Graduate Student</span>
+  <span class="author_bio mbm">Learning how machines learn.</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/resume/">Resume</a>
+      </li>
+        
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+         
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on http://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('oscastellanos@outlook.com', 'Hello from website');</script>
+      </li>
+    
+    <li><a href="http://twitter.com/castellanos_os" class="social-link-item" target="_blank"><i class="fa fa-fw fa-twitter"></i></a></li>
+    
+    
+    <li><a href="http://linkedin.com/in/osvaldo-castellanos" class="social-link-item" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
+    
+    
+    
+    
+    <li><a href="http://github.com/oscastellanos" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m9">
+      <div class="post-listing">
+        <a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="Interactive Segmentation with Imperfect Input">Interactive Segmentation with Imperfect Input</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        17 APR 2019
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    2 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <h2 id="motivation">Motivation</h2>
+<p>This project would assist in workflows that require image segmentation. For example, a web application where a user can upload a picture, click on the object the user wants to copy, and the web application will automatically segment the object of interest from the background. Afterwards, the user would be able to copy or save the object of interest, without having to worry about altering the original image.</p>
+
+<h2 id="problem-definition">Problem Definition</h2>
+
+<p>Input: An RGB image, user interaction (such as clicks) that roughly marks the object of interest.</p>
+
+<p>Output: A smaller portion of the original image containing the area, or object, of interest. An image where values close to one are pixels belonging to the object marked by the user and zeros are anything other than the object.</p>
+
+<p>Need training?: Yes, we will need to train a model in order to obtain the boundaries of a user’s object of interest.</p>
+
+<p>More about the definition: A user should need few interactions with the image for the object of interest to be segmented reasonably.</p>
+
+<h2 id="data">Data</h2>
+
+<p>Each image has an annotation file giving a bounding box and object class label for each object in one of the twenty classes present in the image.
+Data size and format: 2GB tar file
+Ground truth format: Consists of a matrix mapping pixel locations to class type. The classes are:
+1=aeroplane, 2=bicycle, 3=bird, 4=boat, 5=bottle, 6=bus, 7=car , 8=cat, 9=chair, 10=cow,
+11=diningtable, 12=dog, 13=horse, 14=motorbike, 15=person, 16=potted plant, 17=sheep,18=sofa, 19=train, 20=tv/monitor
+<br /></p>
+
+<p><a href="http://host.robots.ox.ac.uk/pascal/VOC/voc2012/index.html#devkit"> <code class="highlighter-rouge">Download link for public data</code> </a>
+<br />
+Evaluation data: 
+GrabCut - 50 images
+BSDS - 96 images</p>
+
+<h2 id="methodology">Methodology</h2>
+<p>We’ll be creating a variation of a fully-convolutional encoder-decoder network. The network will be implemented in TensorFlow using Python.  We will also be creating initial concepts on Google’s Colab notebook environment.</p>
+
+<h2 id="experiment-and-evaluation-metric">Experiment and Evaluation Metric</h2>
+<p>We will be using metrics from “Interactive Boundary Prediction for Object Selection”
+Intersection over Union (IU): This is a region-based metric which measures the intersection over the union between a predicted segmentation mask and the corresponding ground-truth.
+Boundary-Based F-score: Used to evaluate the quality of the boundaries produced.</p>
+
+<h2 id="expected-results">Expected Results</h2>
+<p>We expect to obtain a reasonably well performing network that will obtain the boundary of the object of interest. If there’s enough time, we will deploy the model in a functioning web application that allows a user to upload an image, select an object of interest, and return the boundary and image of the object of interest.</p>
+<h2 id="possible-difficulties">Possible Difficulties</h2>
+<ul>
+  <li>We may not be able to accomplish everything we’ve set out to do, due to time constraints</li>
+  <li>The loss function consists of multiple components and is difficult to understanding thoroughly.</li>
+  <li>GrabCut is implemented in MatLab, which may pose unforeseen challenges in terms of replicating it.
+    <h2 id="notices">Notices</h2>
+  </li>
+</ul>
+
+<p class="notice">The group members include Osvaldo Castellanos, Adolfo Gonzalez III, and David Parra.
+<br />
+This project is for the UTRGV Course CS 6367 Digital Image Processing, 2019 Spring. It is taught by <a href="https://faculty.utrgv.edu/hongkai.yu/index.html"><code class="highlighter-rouge">Dr. Hongkai Yu, Computer Vision &amp; intelligent Transportation System Lab.</code></a></p>
+
+  </article>
+</div>
+
+<div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/articles/2019-04/interactive-seg" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/articles/2019-04/interactive-seg" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/articles/2019-04/interactive-seg" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/articles/2019-04/interactive-seg" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/articles/2019-04/interactive-seg" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div><!-- end share-buttons -->
+
+
+
+        <footer>
+  &copy; 2019 Osvaldo Castellanos. Powered by <a href="http://jekyllrb.com/">Jekyll</a>, <a href="http://github.com/renyuanz/leonids/">leonids theme</a> made with <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-105202997-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+</body>
+</html>

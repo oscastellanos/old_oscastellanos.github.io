@@ -6,24 +6,260 @@
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
     <pubDate>2019-04-17</pubDate>
-    <lastBuildDate>Wed, 17 Apr 2019 02:01:19 -0500</lastBuildDate>
+    <lastBuildDate>Wed, 17 Apr 2019 11:26:40 -0500</lastBuildDate>
     <generator>Jekyll v3.7.4</generator>
     
       <item>
-        <title>Welcome to my blog!</title>
-        <description>&lt;p&gt;My intent is to use this blog as a creative outlet in journaling my progress behind some of my github hosted projects.&lt;/p&gt;
+        <title>Interactive Segmentation with Imperfect Input</title>
+        <description>&lt;h2 id=&quot;motivation&quot;&gt;Motivation&lt;/h2&gt;
+&lt;p&gt;This project would assist in workflows that require image segmentation. For example, a web application where a user can upload a picture, click on the object the user wants to copy, and the web application will automatically segment the object of interest from the background. Afterwards, the user would be able to copy or save the object of interest, without having to worry about altering the original image.&lt;/p&gt;
 
+&lt;h2 id=&quot;problem-definition&quot;&gt;Problem Definition&lt;/h2&gt;
+
+&lt;p&gt;Input: An RGB image, user interaction (such as clicks) that roughly marks the object of interest.&lt;/p&gt;
+
+&lt;p&gt;Output: A smaller portion of the original image containing the area, or object, of interest. An image where values close to one are pixels belonging to the object marked by the user and zeros are anything other than the object.&lt;/p&gt;
+
+&lt;p&gt;Need training?: Yes, we will need to train a model in order to obtain the boundaries of a user’s object of interest.&lt;/p&gt;
+
+&lt;p&gt;More about the definition: A user should need few interactions with the image for the object of interest to be segmented reasonably.&lt;/p&gt;
+
+&lt;h2 id=&quot;data&quot;&gt;Data&lt;/h2&gt;
+
+&lt;p&gt;Each image has an annotation file giving a bounding box and object class label for each object in one of the twenty classes present in the image.
+Data size and format: 2GB tar file
+Ground truth format: Consists of a matrix mapping pixel locations to class type. The classes are:
+1=aeroplane, 2=bicycle, 3=bird, 4=boat, 5=bottle, 6=bus, 7=car , 8=cat, 9=chair, 10=cow,
+11=diningtable, 12=dog, 13=horse, 14=motorbike, 15=person, 16=potted plant, 17=sheep,18=sofa, 19=train, 20=tv/monitor
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://host.robots.ox.ac.uk/pascal/VOC/voc2012/index.html#devkit&quot;&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Download link for public data&lt;/code&gt; &lt;/a&gt;
+&lt;br /&gt;
+Evaluation data: 
+GrabCut - 50 images
+BSDS - 96 images&lt;/p&gt;
+
+&lt;h2 id=&quot;methodology&quot;&gt;Methodology&lt;/h2&gt;
+&lt;p&gt;We’ll be creating a variation of a fully-convolutional encoder-decoder network. The network will be implemented in TensorFlow using Python.  We will also be creating initial concepts on Google’s Colab notebook environment.&lt;/p&gt;
+
+&lt;h2 id=&quot;experiment-and-evaluation-metric&quot;&gt;Experiment and Evaluation Metric&lt;/h2&gt;
+&lt;p&gt;We will be using metrics from “Interactive Boundary Prediction for Object Selection”
+Intersection over Union (IU): This is a region-based metric which measures the intersection over the union between a predicted segmentation mask and the corresponding ground-truth.
+Boundary-Based F-score: Used to evaluate the quality of the boundaries produced.&lt;/p&gt;
+
+&lt;h2 id=&quot;expected-results&quot;&gt;Expected Results&lt;/h2&gt;
+&lt;p&gt;We expect to obtain a reasonably well performing network that will obtain the boundary of the object of interest. If there’s enough time, we will deploy the model in a functioning web application that allows a user to upload an image, select an object of interest, and return the boundary and image of the object of interest.&lt;/p&gt;
+&lt;h2 id=&quot;possible-difficulties&quot;&gt;Possible Difficulties&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;We may not be able to accomplish everything we’ve set out to do, due to time constraints&lt;/li&gt;
+  &lt;li&gt;The loss function consists of multiple components and is difficult to understanding thoroughly.&lt;/li&gt;
+  &lt;li&gt;GrabCut is implemented in MatLab, which may pose unforeseen challenges in terms of replicating it.
+    &lt;h2 id=&quot;notices&quot;&gt;Notices&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p class=&quot;notice&quot;&gt;The group members include Osvaldo Castellanos, Adolfo Gonzalez III, and David Parra.
+&lt;br /&gt;
+This project is for the UTRGV Course CS 6367 Digital Image Processing, 2019 Spring. It is taught by &lt;a href=&quot;https://faculty.utrgv.edu/hongkai.yu/index.html&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Dr. Hongkai Yu, Computer Vision &amp;amp; intelligent Transportation System Lab.&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>2019-04-17</pubDate>
+        <link>http://localhost:4000/articles/2019-04/interactive-seg</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/2019-04/interactive-seg</guid>
+        
+        <category>tensorflow</category>
+        
+        <category>python</category>
+        
+        <category>opencv</category>
+        
+        
+        <category>computer vision</category>
+        
+      </item>
+    
+      <item>
+        <title>Reinforcement Learning</title>
+        <description>&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;Machine learning is usually defined to consist of Supervised Learning and Unsupervised Learning. In supervised learning, a model “learns” a task by training on a set of labeled data. That is, each data point includes the correct “answer” that the model should learn. By doing so, the model is trained to generalize to new, unseen examples.&lt;/p&gt;
+
+&lt;p&gt;Unsupervised learning does not provide labels, and the task then becomes to uncover an underlying structure to the data.&lt;/p&gt;
+
+&lt;p&gt;Reinforcement learning is another pillar of machine learning, and it is a little different than how problems are defined in Supervised and Unsupervised Learning. Problems in reinforcement learning are goal-directed. The goal is to maximize the reward signal given to the reinforcement learning agent in each interaction with an environment.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The artificial neural network provides the program with the ability to generalize from its experience, so that in new states it selects moves based on information saved from similar states faced in the past, as determined by its network. How well a reinforcement learning system can work in problems with such large sets is intimately tied to how appropriately it can generalize from past experience.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;If we want our agent to learn the best sequence of decisions in multiple states through interacting with the environment, then we’ll need to give a value of how much each action will yield a reward. A useful analogy might be that we’re training a person to behave in such a way that their decisions will yield them the most money (reward). Using money as our value metric, we can then compare our choices and decide how to behave.&lt;/p&gt;
+
+&lt;p&gt;There’s a theorem that proves that in deterministic environments, there’s at least one optimal policy. However, it might be computationally difficult to assess the value of each policy even in deterministic environments.&lt;/p&gt;
+
+&lt;h3 id=&quot;coming-soon&quot;&gt;Coming soon…&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Markov Decision Processes - What are they? Why do they matter?&lt;/li&gt;
+  &lt;li&gt;Bellman Equations - The Backbone of RL Algorithms&lt;/li&gt;
+  &lt;li&gt;Q-Learning and Deep Q-Networks&lt;/li&gt;
+  &lt;li&gt;OpenAI gym API&lt;/li&gt;
+  &lt;li&gt;Introducing the Traffic Signaling Problem - Motivations&lt;/li&gt;
+  &lt;li&gt;Using gym to train a traffic controller with DQN&lt;/li&gt;
+  &lt;li&gt;DDQN - Extensions&lt;/li&gt;
+  &lt;li&gt;Multi-Agent Reinforcement Learning - Background&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;previous-presentations&quot;&gt;Previous Presentations&lt;/h2&gt;
+&lt;p&gt;The presentation below was given by me to my Advanced Machine Learning course. I covered the main talking points from my panel presentation at the Eisenhower Fellows Research Panel at the 2019 Transportation Research Board Annual Meeting.&lt;/p&gt;
+&lt;iframe src=&quot;//slides.com/oscastellanos/traffic-signal-controller-a-deep-reinforcement-learning-approach/embed?style=dark&quot; width=&quot;576&quot; height=&quot;420&quot; scrolling=&quot;no&quot; frameborder=&quot;0&quot; webkitallowfullscreen=&quot;&quot; mozallowfullscreen=&quot;&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;h2 id=&quot;notices&quot;&gt;Notices&lt;/h2&gt;
+
+&lt;p class=&quot;notice&quot;&gt;&lt;strong&gt;Warning!&lt;/strong&gt; This post is being continually updated as the project progresses.&lt;/p&gt;
+</description>
+        <pubDate>2019-04-17</pubDate>
+        <link>http://localhost:4000/articles/2019-04/rl</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/2019-04/rl</guid>
+        
+        <category>intro</category>
+        
+        <category>OpenAI gym</category>
+        
+        
+        <category>reinforcement Learning</category>
+        
+      </item>
+    
+      <item>
+        <title>About me</title>
+        <description>&lt;p&gt;I’ve used the technologies listed below in previous projects.&lt;/p&gt;
+
+&lt;p&gt;As I continue to add my projects to github, each will be tagged with the main technologies used to develop them. You will find them easy to access in my tags page.&lt;/p&gt;
+
+&lt;p&gt;The categories page will showcase broad topics I’m interested in. I have planned to add projects in topics such as:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Reinforcement Learning&lt;/li&gt;
+  &lt;li&gt;Computer Vision&lt;/li&gt;
+  &lt;li&gt;Computer Security&lt;/li&gt;
+  &lt;li&gt;Deploying ML Models in Applications&lt;/li&gt;
+  &lt;li&gt;Data Science - Analyzing Markets&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;…and more&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;web-applications&quot;&gt;Web Applications&lt;/h2&gt;
+
+&lt;table rules=&quot;groups&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Front-End&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Back-End&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Databases&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Frameworks&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;HTML5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Node.js&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;MongoDB&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Django&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;CSS3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Python&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;MySQL&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Flask&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;JavaScript&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;nginx&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;MariaDB&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Express.js&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;SASS&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;REST APIs&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;AWS RDS&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;D3.js&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;machine-learning&quot;&gt;Machine Learning&lt;/h2&gt;
+
+&lt;table rules=&quot;groups&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Languages&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Libraries&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Diff. Programming&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;APIs&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Python&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Numpy&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;TensorFlow&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;OpenAI Gym&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Matlab&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Scikit-learn&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Pytorch&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;TF Agents&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;R&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Pandas&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;JavaScript&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;TensorFlow.js&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;other-software-engineering-technologies&quot;&gt;Other Software Engineering Technologies&lt;/h2&gt;
+
+&lt;table rules=&quot;groups&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Containers&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Version Control&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;CI/CD&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Docker&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Git&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;CircleCi&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Kubernetes&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Github&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Gitlab&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 &lt;!--more--&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hi, world&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;contact_me&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hi, Osvaldo!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 </description>
         <pubDate>2019-04-17</pubDate>
         <link>http://localhost:4000/articles/2019-03/welcome-to-blog</link>
         <guid isPermaLink="true">http://localhost:4000/articles/2019-03/welcome-to-blog</guid>
         
-        
-        <category>tutorial</category>
         
       </item>
     
