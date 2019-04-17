@@ -55,5 +55,5 @@ We expect to obtain a reasonably well performing network that will obtain the bo
 
 The group members include Osvaldo Castellanos, Adolfo Gonzalez III, and David Parra.
 <br>
-This project is for the UTRGV Course CS 6367 Digital Image Processing, 2019 Spring. It is taught by <a href="https://faculty.utrgv.edu/hongkai.yu/index.html">`Dr. Hongkai Yu, Computer Vision & intelligent Transportation System Lab.`</a>
+This project is for the UTRGV Course CS 6367 Digital Image Processing, 2019 Spring. It is taught by <a href="https://faculty.utrgv.edu/hongkai.yu/index.html">`Dr. Hongkai Yu`</a>.
 {: .notice}
